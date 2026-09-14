@@ -14,7 +14,7 @@ uses: actions/checkout@v3
 uses: aws-actions/configure-aws-credentials@v1
 with:
 aws-region: us-east-1
-role-to-assume: <ROLE_ARN_FROM_LAB_OUTPUT>
+role-to-assume: arn:aws:iam::619346007778:role/sts-lab-2-target
 role-session-name: OIDCSession
 - run: aws secretsmanager get-secret-value --secret-id flag_sts_lab_2
 shell: bash
