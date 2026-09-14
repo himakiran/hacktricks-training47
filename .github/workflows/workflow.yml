@@ -1,4 +1,4 @@
-name: "AWS Access"
+name: AWS Access
 on:
   workflow_dispatch:
 permissions:
@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::619346007778:role/sts-lab-2-target
           role-session-name: OIDCSession
-          
-      - run: aws secretsmanager get-secret-value --secret-id flag_sts_lab_2
+      - name: Read secret
+        run: aws secretsmanager get-secret-value --secret-id flag_sts_lab_2
         shell: bash
