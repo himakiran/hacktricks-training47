@@ -1,0 +1,20 @@
+name: "AWS Access"
+on:
+workflow_dispatch:
+permissions:
+id-token: write
+contents: read
+jobs:
+read-dev:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout
+uses: actions/checkout@v3
+- name: Configure AWS Credentials
+uses: aws-actions/configure-aws-credentials@v1
+with:
+aws-region: us-east-1
+role-to-assume: <ROLE_ARN_FROM_LAB_OUTPUT>
+role-session-name: OIDCSession
+- run: aws secretsmanager get-secret-value --secret-id flag_sts_lab_2
+shell: bash
