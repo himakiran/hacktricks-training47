@@ -1,4 +1,4 @@
-name: "AWS Access"
+name: AWS Access
 on:
   workflow_dispatch:
 permissions:
